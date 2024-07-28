@@ -14,7 +14,7 @@ jobs:
       - name: set log level
         run: export JFROG_CLI_LOG_LEVEL=DEBUG
       - name: set pip config
-        run: jf pip-config --global=true --repo-resolve=${{ secrets.PROJECT_KEY }}
+        run: jf pipc --global --repo-resolve ${{ secrets.PROJECT_KEY }}
       - name: Setup JFrog CLI
         uses: jfrog/setup-jfrog-cli@v4
         env:
