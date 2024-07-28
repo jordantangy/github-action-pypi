@@ -24,5 +24,6 @@ jobs:
       - name: Install
         run: |
          jf rt ping
+         ls -l
          jf pipc --global --repo-resolve="pypi-remote"
          jf pip install -r jordantangy/github-action-pypi/.github/workflows/requirements.txt
