@@ -1,0 +1,25 @@
+name: JFrog-GitHub pypi
+'on': push
+permissions:
+  id-token: write
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      OIDC_AUDIENCE: jfrog-github
+      OIDC_PROVIDER: jfrog-github
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup JFrog CLI
+        uses: jfrog/setup-jfrog-cli@v4
+        env:
+          JF_URL: '${{ secrets.JF_URL }}'
+          JF_ACCESS_TOKEN: ${{ secrets.JF_ACCESS_TOKEN }}
+        with:
+          oidc-provider-name: '${{ env.OIDC_PROVIDER }}'
+          oidc-audience: '${{ env.OIDC_AUDIENCE }}'
+      - name: Set Pip CLI config
+        run: jf pip-config --global=true --repo-resolve='${{ env.PROJECT_KEY }}'
+      - name: Install
+        run: jf pip install
