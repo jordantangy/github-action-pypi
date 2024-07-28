@@ -22,6 +22,6 @@ jobs:
           oidc-provider-name: jfrog-github
           oidc-audience: jfrog-github
       - name: Install
-        run: 
+        run: |
          jf rt ping
          jf pipc --global --repo-resolve="pypi-remote"
