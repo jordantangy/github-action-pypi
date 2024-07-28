@@ -25,3 +25,4 @@ jobs:
         run: |
          jf rt ping
          jf pipc --global --repo-resolve="pypi-remote"
+         jf pip install -r requirements.txt
