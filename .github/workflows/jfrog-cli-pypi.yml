@@ -19,8 +19,8 @@ jobs:
           JF_URL: '${{ secrets.JF_URL }}'
           JF_ACCESS_TOKEN: ${{ secrets.JF_ACCESS_TOKEN }}
         with:
-          oidc-provider-name: '${{ secrets.OIDC_PROVIDER }}'
-          oidc-audience: '${{ secrets.OIDC_AUDIENCE }}'
+          oidc-provider-name: '${{ env.OIDC_PROVIDER }}'
+          oidc-audience: '${{ env.OIDC_AUDIENCE }}'
       - name: Set Pip CLI config
         run: jf pip-config --global=true --repo-resolve='${{ secrets.PROJECT_KEY }}'
       - name: Install
